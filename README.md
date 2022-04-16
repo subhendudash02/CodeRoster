@@ -35,12 +35,9 @@ python manage.py runserver
 
 <b>Note: </b> If you find any problems registering and signing in, type the following commands
 
-1. ```
-python manage.py makemigrations
 ```
-
-2. ```
-python manage.py migrate
+    python manage.py makemigrations
+    python manage.py migrate
 ```
 
 <b>Note: </b> In linux, type `python3` instead of `python` and `pip3` instead of `pip`.
