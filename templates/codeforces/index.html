@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>Heloooo</h3>
+    <br><br>
+    <table>
+        <tr>
+            <th>Contest ID</th>
+            <th>Contest Name</th>
+            <th>Start Time</th>
+            <th>Duration</th>
+            <th>Contest Type</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.codeforces_contest_id }}</td>
+            <td>{{ item.codeforces_contest_name }}</td>
+            <td>{{ item.codeforces_contest_start_time }}</td>
+            <td>{{ item.codeforces_contest_duration }}</td>
+            <td>{{ item.codeforces_contest_type }}</td>
+        </tr>
+        {% endfor %}    
+    </table>
+</body>
+</html>
