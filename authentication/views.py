@@ -7,6 +7,10 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 
+# Scraping
+import requests
+from bs4 import BeautifulSoup
+
 # Create your views here.
 def home(request):
     # return HttpResponse("Hello world")
@@ -44,7 +48,16 @@ def signin(request):
         if user is not None:
             login(request, user)
             username = user.username
-            return render(request, 'authentication/index.html', {'username':username})
+
+            URL = "https://www.codechef.com/users/" + username
+            r = requests.get(URL)
+            soup = BeautifulSoup(r.content, 'html5lib')
+            rating = soup.find("div", {"class": "rating-number"}).string
+            ranks = soup.findAll("strong")
+            global_rank = ranks[len(ranks) - 2].string 
+            country_rank = ranks[len(ranks) - 1].string
+
+            return render(request, 'authentication/index.html', {'username':username, "rating": rating, "gr": global_rank, "cr": country_rank})
 
         else:
             messages.error(request, "Bad Credentials")
