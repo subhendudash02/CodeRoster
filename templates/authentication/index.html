@@ -23,6 +23,9 @@
     {% if user.is_authenticated %}
     <h3>Hello {{ username }}</h3>
     <h3>Successfully logged in</h3>
+    <p>Your rating is {{ rating }}</p>
+    <p>Country Rank: {{ cr }}</p>
+    <p>Global Rank: {{ gr }}</p>
     <button type="submit"><a href="/signout">SignOut</a></button>
 
     {% else %}
