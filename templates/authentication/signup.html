@@ -28,8 +28,7 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="discover.html">Sign in</a></li>
-          <li><a href="join.html">Sign up</a></li>
+          <li><a href="/signin">Sign in</a></li>
         </ul>
       </nav>
     </header>
@@ -39,6 +38,7 @@
         <span class="accent-text">marathon.</span>
       </h1>
       <form class="join-form" action="/signup" method="post">
+        <h3 style="text-align: center">Sign Up</h3>
         {% csrf_token %}
         <div class="input-group">
             <label>Username:</label>
@@ -70,32 +70,5 @@
 
   <div class="join-page-circle-1"></div>
   <div class="join-page-circle-2"></div>
-
-  <footer class="main-footer">
-    <div class="container">
-      <nav class="footer-nav">
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <nav class="footer-nav">
-        <ul>
-          <li>
-            <a href="#" class="social-link">
-              <img src="{% static 'img/twitter.svg' %}">
-              Twitter
-            </a>
-          </li>
-          <li>
-            <a href="#" class="social-link">
-              <img src="{% static 'img/facebook.svg' %}">
-              Facebook
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
 </body>
 </html>

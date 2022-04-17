@@ -1,9 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
+
     <title>Document</title>
 </head>
 <body>
@@ -17,19 +22,43 @@
 
     {% endfor %}
 
-    <h3>Sign In</h3>
-
-    <form action="/signin" method="post">
-        {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" name="username" id="username" required>
+    <div class="container full-height-grow">
+        <header class="main-header">
+          <a href="/" class="brand-logo">
+            <img src="images/logo.png">
+            <div class="brand-logo-name">CodeRoster</div>
+          </a>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="/signup">Sign up</a></li>
+            </ul>
+          </nav>
+        </header>
+        <section class="join-main-section">
+          <h1 class="join-text">
+            Join the
+            <span class="accent-text">marathon.</span>
+          </h1>
+          <form class="join-form" action="/signin" method="post">
+            <h3 style="text-align: center">Sign In</h3>
+            {% csrf_token %}
+            <div class="input-group">
+                <label>Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="input-group">
+              <label>Password:</label>
+              <input type="password" name="pass1" id="pass1" required>
+            </div>
+            <div class="input-group">
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
+        </section>
         <br>
-
-        <label for="">Password</label>
-        <input type="password" name="pass1" id="pass1" required>
-        <br>
-
-        <button type="submit">Sign In</button>
-    </form>
+      </div>
+    
+      <div class="join-page-circle-1"></div>
+      <div class="join-page-circle-2"></div>
 </body>
 </html>
