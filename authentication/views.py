@@ -11,6 +11,41 @@ from django.contrib.auth import authenticate, login, logout
 import requests
 from bs4 import BeautifulSoup
 
+# Division and star
+def computeDiv(rating):
+    rating = int(rating)
+    div = 0
+    if rating >= 2000:
+        div = 1 # Division-1
+    elif rating >= 1600 and rating < 2000:
+        div = 2 # Division-2
+    elif rating >= 1400 and rating < 1600:
+        div = 3 # Division-3
+    else:
+        div = 4 # Division-4
+    
+    return div
+
+def computeStar(rating):
+    rating = int(rating)
+    star = 0
+    if rating >= 1400 and rating <= 1599:
+        star = 2
+    elif rating >= 1600 and rating <= 1799:
+        star = 3
+    elif rating >= 1800 and rating <= 1999:
+        star = 4
+    elif rating >= 2000 and rating <= 2199:
+        star = 5
+    elif rating >= 2200 and rating <= 2499:
+        star = 6
+    elif rating >= 2500:
+        star = 7
+    else:
+        star = 1
+
+    return star
+
 # Create your views here.
 def home(request):
     # return HttpResponse("Hello world")
@@ -19,7 +54,7 @@ def home(request):
 def signup(request):
 
     if request.method == "POST":
-        # username = request.POST.get('username')
+        name = request.POST.get('name')
         username = request.POST['username']
         name = request.POST['name']
         email = request.POST['email']
@@ -27,7 +62,7 @@ def signup(request):
         pass2 = request.POST['pass2']
 
         myuser = User.objects.create_user(username, email, pass1)
-        myuser.name = name;
+        myuser.name = name
 
         myuser.save()
 
@@ -56,8 +91,18 @@ def signin(request):
             ranks = soup.findAll("strong")
             global_rank = ranks[len(ranks) - 2].string 
             country_rank = ranks[len(ranks) - 1].string
+            division = computeDiv(rating)
+            stars = computeStar(rating)
 
-            return render(request, 'authentication/index.html', {'username':username, "rating": rating, "gr": global_rank, "cr": country_rank})
+            params = {
+                    'username':username, 
+                    "rating": rating, 
+                    "gr": global_rank, 
+                    "cr": country_rank, 
+                    "division": division, 
+                    "stars": stars}
+
+            return render(request, 'authentication/index.html', params)
 
         else:
             messages.error(request, "Bad Credentials")
