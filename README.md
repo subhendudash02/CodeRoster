@@ -58,7 +58,7 @@ python manage.py runserver
 
 <b>Note: </b> In linux, type `python3` instead of `python` and `pip3` instead of `pip`.
 
-# Points to be remembered
+## Points to be remembered
 
  If git asks to stage `__pycache__` and `db.sqlite3` (after running the django app), execute 
 
