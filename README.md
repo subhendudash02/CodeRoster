@@ -62,6 +62,8 @@ python manage.py runserver
 
  If git asks to stage `__pycache__` and `db.sqlite3` (after running the django app), execute 
 
-`git rm -r <file directory>`
+```
+git rm -r <file directory>
+```
 
 where all the file directories are mentioned in `.gitignore`.
