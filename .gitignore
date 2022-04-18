@@ -1,1 +1,4 @@
 db.sqlite3
+MIC_backend\__pycache__
+authentication\__pycache__
+codechef\__pycache__
