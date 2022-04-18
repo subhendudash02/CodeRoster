@@ -1,6 +1,22 @@
-# Backend of MIC FFCS Project
+# MIC FFCS Project - CodeRoster
 
-This is the backend of the MIC FFCS club using django.
+This is the fullstack project for MIC FFCS 2022.
+
+<br>
+
+Our project aims to fetch Codechef, Codeforces contests and practice questions based on an user's
+division and starts in Codechef, or rating in Codeforces. The website also aims to display
+hackathons and other competitions based on user's interests. The website will have personalized
+dashboard in which the user needs to register and set the interests and Codechef username to get
+suitable hackathons and coding competitions.
+
+<br>
+
+## Tech Stack
+
+1. HTML, CSS, Bootstrap (Frontend)
+2. Django (Backend)
+3. Sqlite (Database, managed by django)
 
 <br>
 
@@ -41,3 +57,11 @@ python manage.py runserver
 ```
 
 <b>Note: </b> In linux, type `python3` instead of `python` and `pip3` instead of `pip`.
+
+# Points to be remembered
+
+ If git asks to stage `__pycache__` and `db.sqlite3` (after running the django app), execute 
+
+`git rm -r <file directory>`
+
+where all the file directories are mentioned in `.gitignore`.
