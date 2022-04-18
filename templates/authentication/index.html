@@ -9,23 +9,29 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/cards.css' %}">
-  <title>Soundwave</title>
+  <title>Home</title>
 </head>
 <body class="container full-height-grow">
+    {% for message in messages %}
+    <div class="alert alert={{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+  {% if user.is_authenticated %}
   <header class="main-header">
     <a href="/" class="brand-logo">
       <img src="images/logo.png">
       <div class="brand-logo-name">CodeRoster</div>
     </a>
     <nav class="main-nav">
-      <ul>
-        <li><a href="/signin">Sign in</a></li>
-        <li><a href="/signup">Sign up</a></li>
-      </ul>
+        <ul>
+          <li><a href="/signout">Sign out</a></li>
+        </ul>
     </nav>
   </header>
-  <br><br><br>
-  {% if user.is_authenticated %}
   <div class = "row">
       <div class = "col-12 col-sm-3">
         <div class="card l-bg-cherry">
@@ -95,7 +101,13 @@
       </div>
       <br><br><br>
   </div>
-  {% else %}
+    {% else %}
+    <header class="main-header">
+        <a href="/" class="brand-logo">
+          <img src="images/logo.png">
+          <div class="brand-logo-name">CodeRoster</div>
+        </a>
+    </header>
     <button type="submit"><a href="/signup">SignUp</a></button>
     <button type="submit"><a href="/signin">SignIn</a></button>
     {% endif %}
