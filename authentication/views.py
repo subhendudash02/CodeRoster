@@ -48,8 +48,29 @@ def computeStar(rating):
 
 # Create your views here.
 def home(request):
-    # return HttpResponse("Hello world")
-    return render(request, "authentication/index.html")
+    if 'username' in request.session:
+        username = request.session['username']
+        URL = "https://www.codechef.com/users/" + username
+        r = requests.get(URL)
+        soup = BeautifulSoup(r.content, 'html5lib')
+        rating = soup.find("div", {"class": "rating-number"}).string
+        ranks = soup.findAll("strong")
+        global_rank = ranks[len(ranks) - 2].string 
+        country_rank = ranks[len(ranks) - 1].string
+        division = computeDiv(rating)
+        stars = computeStar(rating)
+
+        params = {
+                'username':username, 
+                "rating": rating, 
+                "gr": global_rank, 
+                "cr": country_rank, 
+                "division": division, 
+                "stars": stars}
+        # return HttpResponse("Hello world")
+        return render(request, "authentication/index.html", params)
+    else:
+        return render(request,"authentication/index.html")
 
 def signup(request):
 
@@ -83,31 +104,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             username = user.username
-
-            URL = "https://www.codechef.com/users/" + username
-            r = requests.get(URL)
-            soup = BeautifulSoup(r.content, 'html5lib')
-            rating = soup.find("div", {"class": "rating-number"}).string
-            ranks = soup.findAll("strong")
-            global_rank = ranks[len(ranks) - 2].string 
-            country_rank = ranks[len(ranks) - 1].string
-            division = computeDiv(rating)
-            stars = computeStar(rating)
-
-            params = {
-                    'username':username, 
-                    "rating": rating, 
-                    "gr": global_rank, 
-                    "cr": country_rank, 
-                    "division": division, 
-                    "stars": stars}
-
-            return render(request, 'authentication/index.html', params)
-
+            request.session['username'] = username
+            return redirect("home")
         else:
             messages.error(request, "Bad Credentials")
-            return redirect("home")
-
+            return redirect("signin")
     return render(request, "authentication/signin.html")
 
 def signout(request):

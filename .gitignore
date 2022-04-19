@@ -3,3 +3,5 @@ MIC_backend/__pycache__
 authentication/__pycache__
 codechef/__pycache__
 codechef/migrations/__pycache__
+codechef_contest_data.json
+codeforces_contest_data.json 

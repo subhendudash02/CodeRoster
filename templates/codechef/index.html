@@ -17,6 +17,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Duration</th>
+            <th>Go to Contest Page</th>
         </tr>
         {% for item in data %}
         <tr>
@@ -25,6 +26,7 @@
             <td>{{ item.contest_start_date }}</td>
             <td>{{ item.contest_end_date }}</td>
             <td>{{ item.contest_duration }}</td>
+            <td><a href = "https://www.codechef.com/{{ item.contest_code }}?itm_campaign=contest_listing" target="_blank">Click Here</a></td>
         </tr>
         {% endfor %}    
     </table>
