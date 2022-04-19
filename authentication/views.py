@@ -1,5 +1,4 @@
 from email import message
-import re
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.contrib.auth.models import User
@@ -10,7 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 # Scraping
 import requests
 from bs4 import BeautifulSoup
-from sympy import rem
 
 # Division and star
 def computeDiv(rating):
