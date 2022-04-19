@@ -34,6 +34,8 @@
         </ul>
     </nav>
   </header>
+  <h3>Hello {{ name }}</h3>
+  <br>
   <div class = "row">
       <div class = "col-12 col-sm-3">
         <div class="card l-bg-cherry">
@@ -103,6 +105,10 @@
       </div>
       <br><br><br>
   </div>
+  {% if stars < 7 %}
+  <h2 style="text-align: center;">You are <strong>{{ remaining }}</strong> points away for <strong>Div-{{ increment }}</strong></h2>
+  {% endif %}
+  <h3 style="text-align: center;">{{ quote }}</h3>
     {% else %}
     <header class="main-header">
         <a href="/" class="brand-logo">

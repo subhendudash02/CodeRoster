@@ -1,5 +1,4 @@
 from email import message
-import re
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.contrib.auth.models import User
@@ -26,25 +25,32 @@ def computeDiv(rating):
     
     return div
 
-def computeStar(rating):
+def computeStarandRem(rating):
     rating = int(rating)
     star = 0
+    rem = 0
     if rating >= 1400 and rating <= 1599:
         star = 2
+        rem = 1600 - rating
     elif rating >= 1600 and rating <= 1799:
         star = 3
+        rem = 1800 - rating
     elif rating >= 1800 and rating <= 1999:
         star = 4
+        rem = 2000 - rating
     elif rating >= 2000 and rating <= 2199:
         star = 5
+        rem = 2200 - rating
     elif rating >= 2200 and rating <= 2499:
         star = 6
+        rem = 2500 - rating
     elif rating >= 2500:
         star = 7
     else:
         star = 1
+        rem = 1400 - rating
 
-    return star
+    return star, rem
 
 # Create your views here.
 def home(request):
@@ -58,15 +64,31 @@ def home(request):
         global_rank = ranks[len(ranks) - 2].string 
         country_rank = ranks[len(ranks) - 1].string
         division = computeDiv(rating)
-        stars = computeStar(rating)
+        stars, remaining = computeStarandRem(rating)
+
+        name = soup.find("h1", {"class": "h2-style"}).string
+        inc = int(division) + 1
+        quote = ""
+
+        if remaining < 10:
+            quote = "Keep Going!! Don't run away from challenges, run over them!"
+        else:
+            quote = "Keep Going!! Don't limit your challenges. Challenge your limits!"
+
+        if stars == 7:
+            quote = "Keep it Up!"
 
         params = {
-                'username':username, 
+                'username':username,
+                'name': name, 
                 "rating": rating, 
                 "gr": global_rank, 
                 "cr": country_rank, 
                 "division": division, 
-                "stars": stars}
+                "stars": stars,
+                "remaining": remaining,
+                "increment": inc, 
+                "quote": quote}
         # return HttpResponse("Hello world")
         return render(request, "authentication/index.html", params)
     else:

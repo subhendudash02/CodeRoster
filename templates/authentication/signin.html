@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
 
-    <title>sign In</title>
+    <title>Sign In</title>
 </head>
 <body>
     {% for message in messages %}
@@ -44,7 +44,7 @@
             {% csrf_token %}
             <div class="input-group">
                 <label>Username:</label>
-                <input type="text" name="username" id="username" required>
+                <input type="text" name="username" id="username" placeholder="Enter your CodeChef username" required>
             </div>
             <div class="input-group">
               <label>Password:</label>
