@@ -111,6 +111,26 @@ body {
   cursor: pointer;
 }
 
+.homebtn {
+  padding: 2%;
+  margin: 0 5% 4% 5%;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #1762A7;
+  color: white;
+}
+
+.homebtn > a {
+  color: white;
+}
+
+.homebtn > a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .btn:hover {
   background-color: #2180d8;
 }
