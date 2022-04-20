@@ -67,3 +67,10 @@ git rm -r <file directory>
 ```
 
 where all the file directories are mentioned in `.gitignore`.
+
+
+# Made By
+ - [Susindhar](https://github.com/susindhar21)
+ - [Soham Mitra](https://github.com/coderboy53)
+ - [Subhendu Dash](https://github.com/subhendudash02)
+  
