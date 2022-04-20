@@ -120,6 +120,7 @@ body {
   cursor: pointer;
   background-color: #1762A7;
   color: white;
+  border-radius: 10px;
 }
 
 .homebtn > a {
