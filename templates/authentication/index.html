@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/cards.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
   <title>Home</title>
 </head>
 <body class="container full-height-grow">
@@ -115,11 +116,21 @@
           <img src="images/logo.png">
           <div class="brand-logo-name">CodeRoster</div>
         </a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href = "/signin">Sign in</a></li>
+                <li><a href = "/signup">Sign up</a></li>
+            </ul>
+        </nav>
     </header>
-    <h1 style="text-align: center;">Welcome to CodeRoster</h1>
-    <br>
-    <button type="submit" class="homebtn"><a href="/signup">Sign Up</a></button>
-    <button type="submit" class="homebtn"><a href="/signin">Sign In</a></button>
+    <br><br>
+    <br><br>
+    <div class = "text-center">
+        <h1 class="join-text">
+            Join us for a journey<br>
+            <span class="accent-text">of your lifetime.</span>
+        </h1>
+    </div>
     {% endif %}
   <div class="home-page-circle-1"></div>
   <div class="home-page-circle-2"></div>
