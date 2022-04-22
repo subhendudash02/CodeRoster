@@ -1,0 +1,4 @@
+beautifulsoup4==4.11.1
+Django==4.0.4
+pandas==1.4.2
+requests==2.25.1
